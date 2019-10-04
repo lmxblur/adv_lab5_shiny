@@ -1,14 +1,15 @@
 library(shiny)
-library(ggplot)
+library(ggplot2)
+munNames <- read.csv("municipalities.csv")
 ui <- fluidPage(
   titlePanel("Kolada Data"),
   
   sidebarLayout(
     sidebarPanel(
       h3('Do the search'),
-      textInput('municipality',label = 'Type',value='Linköping'),
-      #selectInput('municipality',label = 'Select:',choices = c('Stockholm','Linköping','Västerås'),
-      #           selected = 'Linköping'),
+      #textInput('municipality',label = 'Type',value='Linköping'),
+      selectInput('municipality',label = 'Select:',choices = as.vector(munNames$x), selected = 'Linköping'),
+      # c('Stockholm','Linköping','Västerås')
       radioButtons("stats", h3("Please select statistics"),
                    choices = list("Death number" = 1, "Moving net" = 2,
                                   "Born child per 1000 residents" = 3,"Born child" =4),selected = 2)
