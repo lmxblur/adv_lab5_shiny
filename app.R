@@ -1,6 +1,6 @@
 library(shiny)
 library(ggplot2)
-munNames <- read.csv("municipalities.csv")
+munNames <- read.csv("municipalities.csv", encoding = "UTF-8")
 ui <- fluidPage(
   titlePanel("Kolada Data"),
   
