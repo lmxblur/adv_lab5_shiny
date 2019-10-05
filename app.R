@@ -41,7 +41,7 @@ server <- function(input, output) {
                             id <- mlist$id[mlist$municipality==Mname]
                             return(id)
                           },
-                          get_numb = function(Mname, op){
+                          get_stats = function(Mname, op){
                             'Get the statistics'
                             #1 dead
                             #2 moving net
@@ -117,8 +117,8 @@ server <- function(input, output) {
   )
   
   output$out <- renderPlot({
-    ggplot(data=kolada()$get_numb(input$municipality,as.integer(input$stats)), aes(x=period, y=values)) +
-      geom_bar(stat="identity", color="blue", fill="white")
+    ggplot(data=kolada()$get_stats(input$municipality,as.integer(input$stats)), aes(x=period, y=values)) +
+      geom_line(stat="identity", color="blue") + geom_point(size=3, color="blue")
     
     
   })
